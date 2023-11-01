@@ -26,7 +26,6 @@ app.get('/fruits', (req, res) => {
 
 app.get('/fruits/:id', (req, res) => {
   const idx = req.params.id - 1
-
   const fruit = fruits[idx]
 
   if (!fruit) {
@@ -43,32 +42,40 @@ app.get('/fruits/:id', (req, res) => {
 app.post('/fruits', (req, res) => {
   const fruit = req.body
   const lastFruit = fruits[fruits.length - 1]
-  //do no tuse lastId = fruits.length + 1 - will cause issues 
-
+  //do no tuse lastId = fruits.length + 1 - will cause issues with re naming is things are removed 
   const lastId = lastFruit ? lastFruit.id + 1 : 1
   fruit.id = lastId
 
-  fruits.push(fruit)
-  res.status(201).send(fruit)
-})
+  const name = req.params.name
+
+  fruit ? (  fruits.push(fruit), res.status(201).send(fruit) ) : res.status(422).send({ error: 'you need a name to create a fruit' })
+
+  // if (!name){
+  //   res.status(422).send({ error: 'you need a name to create a fruit' })
+  // } else {
+  //   fruits.push(fruit)
+  //   res.status(201).send(fruit)
+  // }
+
+  
+}) 
 
 
 app.patch('/fruids:id', (req, res) => {
+  // const names = req.params.name
+  // const namer = fruits[names]
+
+  // if (!namer) {
+  //   res.status(422).send({ error: 'cannot update missing fruit' })
+  // } 
 
 })
 
 
 app.delete('/fruids:id', (req, res) => {
 
-
-  // if (!fruit) {
-  //   res.status(404).send({ error: "fruit not found", status: 404 })
-  // } else {
-  //   res.status(204).send(fruit)
-  // }
+// res.status(204)
 
 })
-
-
 
 module.exports = app
