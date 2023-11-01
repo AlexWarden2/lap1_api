@@ -13,16 +13,16 @@ app.use(logger)
 
 
 app.get('/', (req, res) => {
-  res.status(200).send('Please search for a fruit')
+  res.status(200).json({ message: `Are you reddy!` })
 })
 
 // http://localhost:3000/fruits
+
 app.get('/fruits', (req, res) => {
-  // const welcome = res.
   res.status(200).send(fruits)
 })
 
-// http://localhost:3000/fruits/1
+///http://localhost:3000/fruits/1
 
 app.get('/fruits/:id', (req, res) => {
   const idx = req.params.id - 1
@@ -30,11 +30,13 @@ app.get('/fruits/:id', (req, res) => {
   const fruit = fruits[idx]
 
   if (!fruit) {
-    res.status(404).send({ error: "fruit not found", status: 404 })
+    res.status(404).send({ error: `Fruit with id ${idx +1} not found` })
   } else {
     res.status(200).send(fruit)
   }
 })
+
+
 
 // http://localhost:3000/fruits
 
@@ -51,22 +53,21 @@ app.post('/fruits', (req, res) => {
 })
 
 
-//to patch - same for delete
 app.patch('/fruids:id', (req, res) => {
 
 })
 
 
-// app.delete('/fruids:id', (req, res) => {
+app.delete('/fruids:id', (req, res) => {
 
 
-//   if (!fruit) {
-//     res.status(404).send({ error: "fruit not found", status: 404 })
-//   } else {
-//     res.status(204).send(fruit)
-//   }
+  // if (!fruit) {
+  //   res.status(404).send({ error: "fruit not found", status: 404 })
+  // } else {
+  //   res.status(204).send(fruit)
+  // }
 
-// })
+})
 
 
 
