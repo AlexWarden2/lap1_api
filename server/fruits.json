@@ -1,0 +1,21 @@
+[
+    {
+        "name": "apple",
+        "id": 1
+    },
+
+    {
+        "name": "pear",
+        "id": 2
+    },
+
+    {
+        "name": "grape",
+        "id": 3
+    },
+
+    {
+        "name": "orange",
+        "id": 4
+    }
+]
